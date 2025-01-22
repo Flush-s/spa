@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -6,49 +6,49 @@ export default function Form() {
     email: "",
     subject: "",
     message: "",
-  })
-  const [status, setStatus] = useState(null)
+  });
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const feedback = {
       ...formData,
       timestamp: new Date().toISOString(),
-    }
+    };
 
-    const existingFeedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]")
-    const updatedFeedbacks = [...existingFeedbacks, feedback]
-    localStorage.setItem("feedbacks", JSON.stringify(updatedFeedbacks))
+    const existingFeedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+    const updatedFeedbacks = [...existingFeedbacks, feedback];
+    localStorage.setItem("feedbacks", JSON.stringify(updatedFeedbacks));
 
-    setStatus({ success: true, message: "Отзыв успешно сохранен" })
-    setFormData({ name: "", email: "", subject: "", message: "" })
-  }
+    setStatus({ success: true, message: "Отзыв успешно сохранен" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  };
 
   useEffect(() => {
     if (status) {
-      const timer = setTimeout(() => setStatus(null), 3000)
-      return () => clearTimeout(timer)
+      const timer = setTimeout(() => setStatus(null), 3000);
+      return () => clearTimeout(timer);
     }
-  }, [status])
+  }, [status]);
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <form onSubmit={handleSubmit} className="bg-[#e1ece5] shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 className="text-3xl font-medium mb-6 text-center text-[#2c2d35]">Обратная связь</h2>
+    <div className="max-w-md mx-auto mt-10 px-2">
+      <form onSubmit={handleSubmit} className="bg-[#e1ece5] shadow-md rounded px-4 pt-6 pb-8 mb-4">
+        <h2 className="text-2xl font-medium mb-6 text-center text-[#2c2d35]">Обратная связь</h2>
         <div className="mb-4">
-          <label className="block text-[#86918a] text-lg font-medium mb-2" htmlFor="name">
+          <label className="block text-[#86918a] text-base font-medium mb-2" htmlFor="name">
             Имя
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-2 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline"
             id="name"
             type="text"
             placeholder="Ваше имя"
@@ -59,11 +59,11 @@ export default function Form() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-[#86918a] text-lg font-medium mb-2" htmlFor="email">
+          <label className="block text-[#86918a] text-base font-medium mb-2" htmlFor="email">
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-2 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="email"
             placeholder="your@email.com"
@@ -74,11 +74,11 @@ export default function Form() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-[#86918a] text-lg font-medium mb-2" htmlFor="subject">
+          <label className="block text-[#86918a] text-base font-medium mb-2" htmlFor="subject">
             Тема
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-2 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline"
             id="subject"
             type="text"
             placeholder="Тема сообщения"
@@ -89,11 +89,11 @@ export default function Form() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-[#86918a] text-lg font-medium mb-2" htmlFor="message">
+          <label className="block text-[#86918a] text-base font-medium mb-2" htmlFor="message">
             Сообщение
           </label>
           <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline h-32"
+            className="shadow appearance-none border rounded w-full py-2 px-2 text-[#2c2d35] leading-tight focus:outline-none focus:shadow-outline h-32"
             id="message"
             placeholder="Ваше сообщение"
             name="message"
@@ -104,7 +104,7 @@ export default function Form() {
         </div>
         <div className="flex items-center justify-center">
           <button
-            className="bg-[#598d66] hover:bg-[#4a7d56] text-white font-medium text-xl py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105"
+            className="bg-[#598d66] hover:bg-[#4a7d56] text-white font-medium text-lg py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105"
             type="submit"
           >
             Отправить
@@ -117,6 +117,5 @@ export default function Form() {
         )}
       </form>
     </div>
-  )
+  );
 }
-

@@ -1,19 +1,19 @@
-import Card from '@/components/Reproductions/Cards'
-import first from 'img/Reproductions/Germany/1.jpg'
-import two from 'img/Reproductions/Germany/2.jpg'
-import three from 'img/Reproductions/Germany/3.jpg'
-import four from 'img/Reproductions/Germany/4.jpg'
-import five from 'img/Reproductions/Germany/5.jpg'
-import six from 'img/Reproductions/Germany/6.jpg'
-import { useEffect, useState } from 'react'
+import Card from '@/components/Reproductions/Cards';
+import first from 'img/Reproductions/Germany/1.jpg';
+import two from 'img/Reproductions/Germany/2.jpg';
+import three from 'img/Reproductions/Germany/3.jpg';
+import four from 'img/Reproductions/Germany/4.jpg';
+import five from 'img/Reproductions/Germany/5.jpg';
+import six from 'img/Reproductions/Germany/6.jpg';
+import { useEffect, useState } from 'react';
 
 interface ArtItem {
-	id: number
-	image: string
-	artist: string
-	title: string
-	medium: string
-	price: string
+	id: number;
+	image: string;
+	artist: string;
+	title: string;
+	medium: string;
+	price: string;
 }
 
 const artItems: ArtItem[] = [
@@ -22,7 +22,7 @@ const artItems: ArtItem[] = [
 		image: first,
 		artist: 'Курт Вернер',
 		title: 'Над городом',
-		medium: 'Цветная литография (40х60) ',
+		medium: 'Цветная литография (40х60)',
 		price: '16 000 руб',
 	},
 	{
@@ -30,7 +30,7 @@ const artItems: ArtItem[] = [
 		image: two,
 		artist: 'Макс Рихтер',
 		title: 'Птенцы',
-		medium: 'Холст, масло (50х80) ',
+		medium: 'Холст, масло (50х80)',
 		price: '14 500 руб',
 	},
 	{
@@ -38,7 +38,7 @@ const artItems: ArtItem[] = [
 		image: three,
 		artist: 'Мартин Майер',
 		title: 'Среди листьев',
-		medium: 'Цветная литография (40х60) ',
+		medium: 'Цветная литография (40х60)',
 		price: '20 000 руб',
 	},
 	{
@@ -46,7 +46,7 @@ const artItems: ArtItem[] = [
 		image: four,
 		artist: 'Герман Беккер',
 		title: 'Яркая птица',
-		medium: 'Цветная литография (40х60) ',
+		medium: 'Цветная литография (40х60)',
 		price: '13 000 руб',
 	},
 	{
@@ -54,7 +54,7 @@ const artItems: ArtItem[] = [
 		image: five,
 		artist: 'Вульф Бауэр',
 		title: 'Дятлы',
-		medium: 'Бумага, акрил (50х80) ',
+		medium: 'Бумага, акрил (50х80)',
 		price: '20 000 руб',
 	},
 	{
@@ -62,32 +62,35 @@ const artItems: ArtItem[] = [
 		image: six,
 		artist: 'Вальтер Хартманн',
 		title: 'Большие воды',
-		medium: 'Бумага, акрил (50х80) ',
+		medium: 'Бумага, акрил (50х80)',
 		price: '23 000 руб',
 	},
-]
+];
 
 function App() {
-	const [cart, setCart] = useState<ArtItem[]>([])
+	const [cart, setCart] = useState<ArtItem[]>([]);
 
 	useEffect(() => {
-		const savedCart = localStorage.getItem('cart')
+		const savedCart = localStorage.getItem('cart');
 		if (savedCart) {
-			setCart(JSON.parse(savedCart))
+			setCart(JSON.parse(savedCart));
 		}
-	}, [])
+	}, []);
 
 	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cart))
-	}, [cart])
+		localStorage.setItem('cart', JSON.stringify(cart));
+	}, [cart]);
 
 	const addToCart = (item: ArtItem) => {
-		setCart(prevCart => [...prevCart, item])
-	}
+		setCart(prevCart => [...prevCart, item]);
+	};
 
 	return (
-		<div className='container mx-auto px-4'>
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center'>
+		<div className='container mx-auto px-2 sm:px-4'>
+			<h1 className='text-xl sm:text-2xl md:text-3xl font-bold text-center my-5'>
+				Наша коллекция
+			</h1>
+			<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center'>
 				{artItems.map(item => (
 					<Card
 						key={item.id}
@@ -101,7 +104,7 @@ function App() {
 				))}
 			</div>
 		</div>
-	)
+	);
 }
 
-export default App
+export default App;
